@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caclulator</title>
+    <script>
+        function getValue(id) {
+            return parseInt(document.getElementById(id).value);
+        }
+
+        function calculateRAIDs() {
+            const noOfDisks = getValue('no-of-disks');
+            const transferRate = getValue('tranfer-rate');
+            const stripSize = getValue('strip-size');
+            
+            const raid0Read = getValue('raid-0-read-size');
+            const raid0Write = getValue('raid-0-write-size');
+            const raid1Read = getValue('raid-1-read-size');
+            const raid1Write = getValue('raid-1-write-size');
+
+            let raid0ReadRes = 0;
+            let raid0WriteRes = 0;
+            let raid1ReadRes = 0;
+            let raid1WriteRes = 0;
+
+            raid0ReadRes = (raid0Read*1000000/transferRate)/(noOfDisks/2);
+            raid0ReadRes = parseInt(raid0ReadRes)/2;
+
+            raid0WriteRes = (raid0Write*1000000/transferRate);
+            raid0WriteRes = parseInt(raid0WriteRes)/2;
+
+            raid1ReadRes = (raid1Read*1000000/transferRate)/2;
+            raid1ReadRes = parseInt(raid1ReadRes);
+
+            raid1WriteRes = (raid1Write*1000000/transferRate);
+            raid1WriteRes = parseInt(raid1WriteRes);
+
+            let res = `<em>
+            <div><strong>RAID0-Read</strong> ${raid0ReadRes}<div>
+            <div><strong>RAID0-Write</strong> ${raid0WriteRes}<div>
+            <div><strong>RAID1-Read</strong> ${raid1ReadRes}<div>
+            <div><strong>RAID1-Write</strong> ${raid1WriteRes}<div>
+                </em>
+            `;
+            
+            document.getElementById('result').innerHTML = res;
+
+
+            console.log({
+                noOfDisks,
+                transferRate,
+                stripSize,
+                raid0Read,
+                raid0Write,
+                raid1Read,
+                raid1Write,
+                raid0ReadRes,
+                raid0WriteRes,
+                raid1ReadRes,
+                raid1WriteRes
+            });
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>
+            RAID Caclulator
+        </legend>
+        <form action="" id="form1" onsubmit="return calculateRAIDs();">
+            <input id="no-of-disks" type="number" placeholder="Number of hard disks" value="10" required="true"/><br/><br/>
+            <input id="tranfer-rate" type="number" placeholder="Max transfer rate /MB" value="91" required="true"/><br/><br/>
+            <input id="strip-size" type="number" placeholder="Strip size in MB" value="1" required="true"/><br/><br/>
+            
+            <fieldset>
+                <legend>RAID0</legend>
+                <input id="raid-0-read-size" type="number" placeholder="Read size MB" value="95" required="true"/><br/><br/>
+                <input id="raid-0-write-size" type="number" placeholder="Write size MB" value="90" required="true"/><br/><br/>
+            </fieldset>
+            <br/>
+            <fieldset>
+                <legend>RAID1</legend>
+                <input id="raid-1-read-size" type="number" placeholder="Read size MB" value="81" required="true"/><br/><br/>
+                <input id="raid-1-write-size" type="number" placeholder="Write size MB" value="46" required="true"/><br/><br/>
+            </fieldset>
+            <br/>
+            <input type="submit" value="Calculate"/>
+        </form>
+    </fieldset>
+    <br/>
+    <fieldset>
+        <legend>Result:</legend>
+        <div id="result">
+
+        </div>
+    </fieldset>
+</body>
+</html>
