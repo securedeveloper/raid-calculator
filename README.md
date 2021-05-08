@@ -1,7 +1,7 @@
 ## RAID Calculator
-RAID Calculator `/src` repository
+RAID Calculator [`/src`](https://github.com/securedeveloper/raid-calculator/) repository
 
-- RAID read/write time calculator is accessible at [Here](link)
+- RAID read/write time calculator is accessible at [here](https://securedeveloper.github.io/raid-calculator/)
 
 ### Contributor ✨
 
@@ -16,5 +16,5 @@ RAID Calculator `/src` repository
   </tr>
 </table>
 
-<em>Create an issue if you find any calculation bug.</em>
+<em>Create an [issue](https://github.com/securedeveloper/raid-calculator/issues) if you find any calculation bug.</em>
 
