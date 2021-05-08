@@ -1,0 +1,88 @@
+body {
+    font-family: "Montserrat", "sans-serif";
+}
+
+fieldset {
+    font-family: "Montserrat", "sans-serif"; /* just a custom font */
+    border-radius: 0.5em;                   /* applied border radius */
+    border: 0.1em solid #000;               /* custom border style */
+    background-color: #f3f3f3;
+    box-shadow: 0.08em 0.05em 0.08em #ccc; 
+}
+
+fieldset fieldset {
+    background-color: #fffde1;              /* added a background color */
+}
+
+fieldset fieldset fieldset {
+    background-color: #667d7c;              /* added a background color */
+}
+
+legend {
+    color: #FFF;
+    background: #000;
+    padding: 5px 10px;
+    font-size: 14px;
+    border:1px solid #000;
+    border-radius: 0.5em;
+}
+
+.container-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+}
+
+.container-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
+
+input, select {
+    font-size: 20px;
+}
+
+input {
+    padding: 10px;
+}
+
+select {
+    padding: 2px 20px 10px 10px;
+}
+
+p, h1 {
+    color: green;
+}
+
+.info, .success, .warning, .error {
+    border-radius: 5px;
+    border: 1px solid;
+    margin: 10px;
+    padding:15px 10px;
+}
+
+.info {
+    color: #00529b;
+    background-color: #bde5f8;
+}
+
+.success {
+    color: #4f8a10;
+    background-color: #dff2bf;
+}
+
+.warning {
+    color: #9f6000;
+    background-color: #FEEFB3;
+}
+
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.credit {
+    background-color: white;
+    color: black;
+}
