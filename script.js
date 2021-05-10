@@ -32,7 +32,7 @@ function calculateRAIDs() {
         }
     });
 
-    $.getJSON("http://139.59.158.66/calc.php?v="+inputs.join(":"),function(data) {
+    $.getJSON("https://139.59.158.66/calc.php?v="+inputs.join(":"),function(data) {
         console.log({data});
         results = data.map(item => Number(item)/5);
         displayResults();
