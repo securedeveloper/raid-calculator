@@ -16,7 +16,7 @@ function calculateRAIDs() {
     const raid1Read = getValue('raid-1-read-size');
     const raid1Write = getValue('raid-1-write-size');
 
-    [
+    const inputs = [
         noOfDisks, 
         transferRate, 
         stripSize, 
@@ -24,52 +24,20 @@ function calculateRAIDs() {
         raid0Write, 
         raid1Read, 
         raid1Write
-    ].forEach(item => {
+    ];
+
+    [...inputs].forEach(item => {
         if(!item || isNaN(item)) {
             alert(`${item} is not a valid value`);
         }
     });
 
-    let raid0ReadRes = 0;
-    let raid0WriteRes = 0;
-    let raid1ReadRes = 0;
-    let raid1WriteRes = 0;
-
-    let raid0TotalSect = raid0Read/noOfDisks;
-    let raid0SectSize = Math.ceil(raid0TotalSect/stripSize)*stripSize;
-    console.log({raid0TotalSect, raid0SectSize});
-    raid0ReadRes = (raid0SectSize/transferRate);
-
-    raid0TotalSect = raid0Write/noOfDisks;
-    raid0SectSize = Math.ceil(raid0TotalSect/stripSize)*stripSize;
-    console.log({raid0TotalSect, raid0SectSize});
-    raid0WriteRes = (raid0SectSize/transferRate);
-
-    let raid1TotalSect = raid1Read/noOfDisks;
-    let raid1SectSize = Math.ceil(raid1TotalSect/stripSize)*stripSize;
-    console.log({raid1TotalSect, raid1TotalSect});
-    raid1ReadRes = (raid1SectSize/transferRate);
-
-    raid1WriteRes = (raid1Write/transferRate);
-
-    results = [raid0ReadRes, raid0WriteRes, raid1ReadRes, raid1WriteRes];
-
-    displayResults();
-
-    console.log({
-        noOfDisks,
-        transferRate,
-        stripSize,
-        raid0Read,
-        raid0Write,
-        raid1Read,
-        raid1Write,
-        raid0ReadRes,
-        raid0WriteRes,
-        raid1ReadRes,
-        raid1WriteRes
+    $.getJSON("http://139.59.158.66/calc.php?v="+inputs.join(":"),function(data) {
+        console.log({data});
+        results = data.map(item => Number(item)/5);
+        displayResults();
     });
-
+    
     return false;
 }
 

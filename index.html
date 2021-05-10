@@ -16,7 +16,7 @@
             load JSON-encoded data from the server using a
             GET HTTP request */
     
-        $.getJSON("https://api.ipify.org?format=json",function(data) {
+        $.get("https://api.ipify.org?format=json",function(data) {
             $("#gfg").html(`
             <div class="success"><span><i class="fas fa-user-secret"></i> &nbsp;</span><em><strong><u>${data.ip}</u></strong> is your recorded IP</em></div> 
             `);
@@ -53,8 +53,7 @@
             <br/>
 
             <fieldset class="container-2">
-                <legend>RAID0</legend>
-
+                <legend>RAID 0</legend>
                 <fieldset>
                     <legend>Read file size:</legend>
                     <input id="raid-0-read-size" type="number" placeholder="Read size MB" value="" required="true"/><br/><br/>
@@ -69,8 +68,7 @@
             <br/>
 
             <fieldset class="container-2">
-                <legend>RAID1</legend>
-
+                <legend>RAID 1</legend>
                 <fieldset>
                     <legend>Read file size:</legend>
                     <input id="raid-1-read-size" type="number" placeholder="Read size MB" value="" required="true"/><br/><br/>
